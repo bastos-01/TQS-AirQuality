@@ -58,7 +58,7 @@ public class CityServiceImplementation {
 
     public City handleRequestCityData(String url, String country, String state, String city) throws URISyntaxException, IOException {
 
-        URIBuilder builder = new URIBuilder(url);
+        URIBuilder builder = new URIBuilder(url.replaceAll(" ", "%20"));
         String response = constructUrlRequest(builder.build().toString());
 
         JSONObject response_json = (JSONObject) new JSONObject(response);
@@ -104,7 +104,7 @@ public class CityServiceImplementation {
 
         ArrayList<String> values = new ArrayList<>();
 
-        URIBuilder builder = new URIBuilder(url);
+        URIBuilder builder = new URIBuilder(url.replaceAll(" ", "%20"));
         String response = constructUrlRequest(builder.build().toString());
 
         JSONObject response_json = (JSONObject) new JSONObject(response);
@@ -126,7 +126,7 @@ public class CityServiceImplementation {
 
         ArrayList<City> cidades = new ArrayList<>();
 
-        URIBuilder builder = new URIBuilder(url);
+        URIBuilder builder = new URIBuilder(url.replaceAll(" ", "%20"));
         String response = constructUrlRequest(builder.build().toString());
 
         JSONObject response_json = (JSONObject) new JSONObject(response);
