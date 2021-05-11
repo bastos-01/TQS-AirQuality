@@ -1,9 +1,8 @@
-package tqs.repository;
+package tqs.airquality.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import java.util.Optional;
-import tqs.entities.City;
+import tqs.airquality.entities.City;
 
 @Repository
 public interface PollutionRepository extends JpaRepository<City, Long>{
