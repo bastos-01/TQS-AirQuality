@@ -387,11 +387,11 @@ html,body{
 
 
 .single-travel-boxes {
-    margin-top: -125px;
+    margin-top: -200px;
     background: #fff;
 }
 .tab-para p {
-    font-size: 24px;
+    font-size: 50px;
 }
 /* .desc-tabs */
 .desc-tabs {
@@ -458,7 +458,7 @@ html,body{
 }
 .single-tab-select-box h2{
 	color: #565a5c;
-    font-size: 20px;
+    font-size: 40px;
     font-weight: 500;
     font-family: 'Poppins', sans-serif;
     text-transform: capitalize;
@@ -472,7 +472,7 @@ html,body{
     content: "\f107";
     right: 0px;
     top: 0;
-    font-size: 18px;
+    font-size: 50px;
     color: #aaa;
     background: #f9f9f9;
     font-family: "fontAwesome";
@@ -490,7 +490,7 @@ html,body{
     content: "\f073";
     right: 0px;
     top: 0;
-    font-size: 18px;
+    font-size: 50px;
     color: #aaa;
     background: #f9f9f9;
     font-family: "fontAwesome";
@@ -502,7 +502,7 @@ html,body{
 
 .travel-select-icon  select,.travel-check-icon  input {
 	color:#aaa;
-	font-size:14px;
+	font-size:50px;
 	font-family: 'Poppins', sans-serif;
 	text-transform: capitalize;
 	height: 48px;

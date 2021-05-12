@@ -82,7 +82,7 @@ public class CityServiceImplementation {
         JSONObject location = new JSONObject(data.get("location").toString());
         JSONArray coordinates = new JSONArray(location.get("coordinates").toString());
         Double latitude = Double.parseDouble(coordinates.get(0).toString());
-        Double longitude = Double.parseDouble(coordinates.get(0).toString());
+        Double longitude = Double.parseDouble(coordinates.get(1).toString());
 
         //current
         JSONObject current = new JSONObject(data.get("current").toString());
@@ -123,6 +123,7 @@ public class CityServiceImplementation {
 
         JSONObject response_json = (JSONObject) new JSONObject(response);
 
+        System.out.println(response_json);
         JSONArray data = new JSONArray(response_json.get("data").toString());
 
         for (Object obj: data){

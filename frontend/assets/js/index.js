@@ -23,6 +23,31 @@ $(document).ready(function(){
         
        
     });
+
+    $.ajax({
+        url: "http://localhost:8080/api/cache",
+        headers:{
+            "Access-Control-Allow-Origin":"http://localhost",
+        },
+        statusCode: {
+            500: function(xhr){
+                console.log("erro 500");
+                return;
+            },
+            403: function(xhr){
+                console.log("erro 403");
+                return;
+            }
+        }
+
+    }).then(function(data) {
+        $('#hits').text(data.hits);
+        $('#misses').text(data.misses);
+        $('#requests').text(data.requests);
+        
+        
+       
+    });
     
 });
 
@@ -113,7 +138,44 @@ $('#searchButton').click(function(){
         }
 
     }).then(function(data) {
-        console.log(data)
+        $('#cityfill').text(data.name + ", " + data.state + ", " + data.country);
+        $('#latfill').text("Latitude: " + data.latitude);
+        $('#longfill').text("Longitude: " + data.longitude);
+        $('#tpfill').text(data.weather.temperature + " ºC");
+        $('#prfill').text(data.weather.pressure + " hPa");
+        $('#hufill').text(data.weather.humidity + " %");
+        $('#wsfill').text(data.weather.wind_speed + " m/s");
+        $('#aqius').text(data.pollution.aqi_us);
+        $('#aqicn').text(data.pollution.aqui_cn);
+        $('#mainus').text(data.pollution.main_poll_us);
+        $('#maincn').text(data.pollution.main_poll_cn);
+
+        
+       
+    });
+});
+
+$('#updateButton').click(function(){
+    $.ajax({
+        url: "http://localhost:8080/api/cache",
+        headers:{
+            "Access-Control-Allow-Origin":"http://localhost",
+        },
+        statusCode: {
+            500: function(xhr){
+                console.log("erro 500");
+                return;
+            },
+            403: function(xhr){
+                console.log("erro 403");
+                return;
+            }
+        }
+
+    }).then(function(data) {
+        $('#hits').text(data.hits);
+        $('#misses').text(data.misses);
+        $('#requests').text(data.requests);
         
         
        
