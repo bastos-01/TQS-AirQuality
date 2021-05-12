@@ -11,7 +11,9 @@ import tqs.airquality.service.CityServiceImplementation;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
@@ -65,6 +67,11 @@ public class CityRestController {
 
         return city_data;
 
+    }
+
+    @GetMapping(value = "/cache", produces = "application/json")
+    public HashMap<String, Integer> getCacheDetails(){
+        return this.cityServiceImplementation.getCacheDetails();
     }
 
 

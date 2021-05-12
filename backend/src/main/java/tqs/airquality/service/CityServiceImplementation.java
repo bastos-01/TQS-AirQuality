@@ -17,6 +17,8 @@ import java.io.IOException;
 import java.lang.reflect.Array;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import org.json.JSONObject;
@@ -166,6 +168,14 @@ public class CityServiceImplementation {
             return null;
         }
 
+    }
+
+    public HashMap<String, Integer> getCacheDetails(){
+        HashMap<String, Integer> response = new HashMap<String, Integer>();
+        response.put("hits", this.cache.getHits());
+        response.put("misses", this.cache.getMisses());
+        response.put("requests", this.cache.getRequests());
+        return response;
     }
     
 
