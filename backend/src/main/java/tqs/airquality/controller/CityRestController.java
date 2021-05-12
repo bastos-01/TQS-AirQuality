@@ -32,14 +32,17 @@ public class CityRestController {
     public CityServiceImplementation cityServiceImplementation;
 
     @GetMapping(value = "/list/{country}/{state}", produces="application/json")
-    public List<City> getAllCities(@PathVariable(value = "country") String country,
+    public List<String> getAllCities(@PathVariable(value = "country") String country,
                                    @PathVariable(value = "state") String state) throws IOException, URISyntaxException {
 
         ArrayList<City> cidades = this.cityServiceImplementation.getCities(country, state);
-        for(City c: cidades)
+        ArrayList<String> nomes_cidades = new ArrayList<>();
+        for(City c: cidades){
             cityRepository.save(c);
+            nomes_cidades.add(c.getName());
+        }
         System.out.println(cidades.get(0).toString());
-        return cidades;
+        return nomes_cidades;
     }
 
     @GetMapping(value = "/list/{country}", produces="application/json")
