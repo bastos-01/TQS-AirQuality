@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import org.json.JSONObject;
+import tqs.airquality.entities.Cache;
 import tqs.airquality.entities.City;
 import tqs.airquality.entities.Pollution;
 import tqs.airquality.entities.Weather;
@@ -32,7 +33,9 @@ public class CityServiceImplementation {
 
     private CloseableHttpClient client;
 
-    public CityServiceImplementation(){
+    private Cache cache = new Cache(60);
+
+    public CityServiceImplementation() throws InterruptedException {
         this.client = HttpClients.createDefault();
     }
 
@@ -57,6 +60,13 @@ public class CityServiceImplementation {
     }
 
     public City handleRequestCityData(String url, String country, String state, String city) throws URISyntaxException, IOException {
+
+        City cityFromCache = cache.getCityFromCache(city);
+
+        if(cityFromCache != null){
+            return cityFromCache;
+        }
+
 
         URIBuilder builder = new URIBuilder(url.replaceAll(" ", "%20"));
         String response = constructUrlRequest(builder.build().toString());
@@ -95,6 +105,8 @@ public class CityServiceImplementation {
         Pollution pollution = new Pollution(aqius, aqicn, mainus, maincn);
 
         City full_city = new City(city, state, country, latitude, longitude, time_stamp, weather, pollution);
+
+        cache.addValue(city, full_city);
 
 
         return full_city;
