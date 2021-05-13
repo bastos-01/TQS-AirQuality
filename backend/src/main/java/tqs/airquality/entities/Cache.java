@@ -14,11 +14,10 @@ public class Cache {
 
     private long cleanTime;
 
-    private Thread cleaningByTime = null;
 
-    public Cache(int cleanTime) throws InterruptedException {
+    public Cache(int cleanTime) {
         this.cleanTime = cleanTime;
-        this.cleaningByTime = cleaningByTime();
+        cleaningByTime();
     }
 
     public int getHits() {
@@ -54,16 +53,14 @@ public class Cache {
         if(cacheMap.containsKey(key) && timeToLive.get(key) > System.currentTimeMillis()){
             this.hits++;
             this.requests++;
-            System.out.println("foi da chache");
             return cacheMap.get(key);
         }
-        System.out.println("Não foi da cache");
         this.requests++;
         this.misses++;
         return null;
     }
 
-    public Thread cleaningByTime() throws InterruptedException{
+    public Thread cleaningByTime(){
         Thread thread = new Thread(){
             @Override
             public void run(){
@@ -74,12 +71,12 @@ public class Cache {
                             deleteValue(key);
                         }
                     }
-                    try{
+                    try {
                         Thread.sleep(cleanTime * 1000);
-                    } catch (InterruptedException ex) {
-                        System.out.println("ERRO: " + ex);
+                    } catch (InterruptedException e) {
                         Thread.currentThread().interrupt();
                     }
+
 
                 }
             }
@@ -98,10 +95,7 @@ public class Cache {
     }
 
     public boolean containsCity(String key){
-        if(this.cacheMap.containsKey(key))
-            return true;
-
-        return false;
+        return this.cacheMap.containsKey(key);
     }
 
 }

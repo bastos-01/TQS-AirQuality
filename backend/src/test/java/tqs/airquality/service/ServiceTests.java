@@ -16,6 +16,7 @@ import tqs.airquality.repository.CityRepository;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.mockito.Mockito.*;
 
@@ -51,12 +52,11 @@ class ServiceTests {
 
     @Test
     void getCityTest() throws IOException, URISyntaxException {
-        String city_name = "Aveiro";
+        String cityName = "Aveiro";
         City foundCity = cityServiceImplementation.getCityData("Portugal", "Aveiro", "Aveiro");
 
-        assertThat(foundCity.getName()).isEqualTo(city_name);
+        assertThat(foundCity.getName()).isEqualTo(cityName);
         assertThat(foundCity.getCountry()).isEqualTo("Portugal");
     }
-
 
 }

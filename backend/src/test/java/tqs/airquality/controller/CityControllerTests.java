@@ -9,24 +9,20 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import tqs.airquality.entities.City;
 import tqs.airquality.service.CityServiceImplementation;
-import tqs.airquality.utils.handleJSON;
 
 import static org.mockito.BDDMockito.given;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.hasSize;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(CityRestController.class)
-public class CityControllerTests {
+class CityControllerTests {
 
     @Autowired
     private MockMvc mvc;
@@ -43,7 +39,6 @@ public class CityControllerTests {
         ArrayList<City> cidades = new ArrayList<>();
         cidades.add(new City("Aveiro", "Aveiro", "Portugal"));
         cidades.add(new City("Agueda", "Aveiro", "Portugal"));
-        //cidades.add(new City("Porto", "Porto", "Portugal"));
 
         given(service.getCities("Portugal", "Aveiro")).willReturn(cidades);
 

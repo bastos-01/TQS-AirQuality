@@ -30,7 +30,7 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class SeleniumTest {
+class SeleniumTest {
 
     private WebDriver driver;
     private Map<String, Object> vars;
@@ -38,19 +38,19 @@ public class SeleniumTest {
     JavascriptExecutor js;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         driver = new FirefoxDriver();
         js = (JavascriptExecutor) driver;
         vars = new HashMap<String, Object>();
     }
 
     @AfterEach
-    public void tearDown() {
+    void tearDown() {
         driver.close();
     }
 
     @Test
-    public void searchCity() throws InterruptedException {
+    void searchCity() throws InterruptedException {
         driver.get("http://localhost:8000/");
         driver.manage().window().setSize(new Dimension(1920, 1123));
         js.executeScript("window.scrollTo(0,331)");
@@ -91,7 +91,7 @@ public class SeleniumTest {
     }
 
     @Test
-    public void cacheChanges() throws InterruptedException {
+    void cacheChanges() throws InterruptedException {
         driver.get("http://localhost:8000/");
         driver.manage().window().setSize(new Dimension(1920, 1123));
         js.executeScript("window.scrollTo(0,331)");

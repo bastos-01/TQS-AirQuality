@@ -27,45 +27,29 @@ public class Weather {
     @Column(name = "humidity")
     private Double humidity;
 
-    @Column(name = "wind_speed")
-    private Double wind_speed;
+    @Column(name = "windSpeed")
+    private Double windSpeed;
 
-    public Weather(Double temperature, Double pressure, Double humidity, Double wind_speed) {
+    public Weather(Double temperature, Double pressure, Double humidity, Double windSpeed) {
         this.temperature = temperature;
         this.pressure = pressure;
         this.humidity = humidity;
-        this.wind_speed = wind_speed;
+        this.windSpeed = windSpeed;
     }
 
     public Double getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(Double temperature) {
-        this.temperature = temperature;
-    }
-
     public Double getPressure() {
         return pressure;
-    }
-
-    public void setPressure(Double pressure) {
-        this.pressure = pressure;
     }
 
     public Double getHumidity() {
         return humidity;
     }
 
-    public void setHumidity(Double humidity) {
-        this.humidity = humidity;
-    }
-
-    public Double getWind_speed() {
-        return wind_speed;
-    }
-
-    public void setWind_speed(Double wind_speed) {
-        this.wind_speed = wind_speed;
+    public Double getWindSpeed() {
+        return windSpeed;
     }
 }
