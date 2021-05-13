@@ -14,7 +14,7 @@ public class Cache {
 
     private long cleanTime;
 
-    private Thread cleaningByTime;
+    private Thread cleaningByTime = null;
 
     public Cache(int cleanTime) throws InterruptedException {
         this.cleanTime = cleanTime;
@@ -75,9 +75,10 @@ public class Cache {
                         }
                     }
                     try{
-                        Thread.sleep(cleanTime);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+                        Thread.sleep(cleanTime * 1000);
+                    } catch (InterruptedException ex) {
+                        System.out.println("ERRO: " + ex);
+                        Thread.currentThread().interrupt();
                     }
 
                 }
@@ -85,6 +86,22 @@ public class Cache {
         };
         thread.start();
         return thread;
+    }
+
+    public void clearCache(){
+        this.cacheMap.clear();
+        this.timeToLive.clear();
+    }
+
+    public int getCacheSize(){
+       return this.cacheMap.size();
+    }
+
+    public boolean containsCity(String key){
+        if(this.cacheMap.containsKey(key))
+            return true;
+
+        return false;
     }
 
 }

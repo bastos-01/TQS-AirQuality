@@ -19,13 +19,10 @@ import java.util.Map;
 @RequestMapping("/api")
 public class CityRestController {
 
-    @Autowired
     public CityRepository cityRepository;
 
-    @Autowired
     public PollutionRepository pollutionRepository;
 
-    @Autowired
     public WeatherRepository weatherRepository;
 
     @Autowired
@@ -38,7 +35,7 @@ public class CityRestController {
         ArrayList<City> cidades = this.cityServiceImplementation.getCities(country, state);
         ArrayList<String> nomes_cidades = new ArrayList<>();
         for(City c: cidades){
-            cityRepository.save(c);
+            //cityRepository.save(c);
             nomes_cidades.add(c.getName());
         }
         System.out.println(cidades.get(0).toString());
