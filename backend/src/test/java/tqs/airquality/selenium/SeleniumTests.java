@@ -20,6 +20,6 @@ public class SeleniumTests {
         assertThat(driver.getTitle(), containsString("JUnit 5 extension for Selenium"));
     }
 
-    
+
 
 }
