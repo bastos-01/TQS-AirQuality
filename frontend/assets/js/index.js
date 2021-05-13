@@ -144,11 +144,11 @@ $('#searchButton').click(function(){
         $('#tpfill').text(data.weather.temperature + " ºC");
         $('#prfill').text(data.weather.pressure + " hPa");
         $('#hufill').text(data.weather.humidity + " %");
-        $('#wsfill').text(data.weather.wind_speed + " m/s");
-        $('#aqius').text(data.pollution.aqi_us);
-        $('#aqicn').text(data.pollution.aqui_cn);
-        $('#mainus').text(data.pollution.main_poll_us);
-        $('#maincn').text(data.pollution.main_poll_cn);
+        $('#wsfill').text(data.weather.windSpeed + " m/s");
+        $('#aqius').text(data.pollution.aqiUs);
+        $('#aqicn').text(data.pollution.aqiCn);
+        $('#mainus').text(data.pollution.mainPollUs);
+        $('#maincn').text(data.pollution.mainPollCn);
 
         
        

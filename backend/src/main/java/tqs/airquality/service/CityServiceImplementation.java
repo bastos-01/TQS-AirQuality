@@ -137,6 +137,7 @@ public class CityServiceImplementation {
         String response = constructUrlRequest(builder.build().toString());
 
         JSONObject responseJson = new JSONObject(response);
+        System.out.println(responseJson);
 
         JSONArray data = new JSONArray(responseJson.get("data").toString());
 
