@@ -17,9 +17,15 @@ $(document).ready(function(){
         }
 
     }).then(function(data) {
-        data.forEach(country=>{
+        if(!$.trim(data)){
+            alert("City not available at this moment");
+        }
+        else{
+            data.forEach(country=>{
             $('#countries').append('<option value=\"' + country + '\"> ' + country + '</option>')
         })
+        }
+        
         
        
     });
@@ -74,9 +80,15 @@ $('#countries').change(function(){
             }
     
         }).then(function(data) {
-            data.forEach(state=>{
+            if(!$.trim(data)){
+                alert("City not available at this moment");
+            }
+            else{
+                data.forEach(state=>{
                 $('#states').append('<option value=\"' + state + '\"> ' + state + '</option>')
             })
+            }
+            
             
            
         });
@@ -108,11 +120,15 @@ $('#states').change(function(){
             }
     
         }).then(function(data) {
-            console.log(data)
-            data.forEach(city=>{
+            console.log("olaaaaaa");
+            if(!$.trim(data)){
+                alert("City not available at this moment");
+            }
+            else{
+                data.forEach(city=>{
                 $('#cities').append('<option value=\"' + city + '\"> ' + city + '</option>')
             })
-            
+            }
            
         });
     }
@@ -138,6 +154,7 @@ $('#searchButton').click(function(){
         }
 
     }).then(function(data) {
+        console.log(data);
         $('#cityfill').text(data.name + ", " + data.state + ", " + data.country);
         $('#latfill').text("Latitude: " + data.latitude);
         $('#longfill').text("Longitude: " + data.longitude);

@@ -68,6 +68,10 @@ public class CityServiceImplementation {
 
         JSONObject responseJson =  new JSONObject(response);
 
+        if(responseJson.get("status").toString() == "fail"){
+            return null;
+        }
+
         //city data
         JSONObject data = new JSONObject(responseJson.get("data").toString());
 
@@ -116,6 +120,10 @@ public class CityServiceImplementation {
 
         JSONObject responseJson = new JSONObject(response);
 
+        if(responseJson.get("status").toString() == "fail"){
+            return null;
+        }
+
         JSONArray data = new JSONArray(responseJson.get("data").toString());
 
         for (Object obj: data){
@@ -137,7 +145,10 @@ public class CityServiceImplementation {
         String response = constructUrlRequest(builder.build().toString());
 
         JSONObject responseJson = new JSONObject(response);
-        System.out.println(responseJson);
+
+        if(responseJson.get("status").toString().equals("fail")){
+            return null;
+        }
 
         JSONArray data = new JSONArray(responseJson.get("data").toString());
 
